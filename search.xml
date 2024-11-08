@@ -50,7 +50,7 @@
 
 <p>拿到deepsea.wav，用deepsound打开，获得一个sea.wav文件，SSTV扫描，拿到压缩包key</p>
 <p><img src="/2024/11/06/SICTF-2024-round4/6.jpg" alt="img"></p>
-<p>解密得到</p>
+<p>解压得到</p>
 <p><img src="/2024/11/06/SICTF-2024-round4/7.jpg" alt="img"></p>
 <p>文件名说是base2048，直接解密</p>
 <p><img src="/2024/11/06/SICTF-2024-round4/8.jpg" alt="img"></p>
@@ -128,8 +128,8 @@
       </categories>
       <tags>
         <tag>misc</tag>
-        <tag>crypto</tag>
         <tag>web</tag>
+        <tag>crypto</tag>
       </tags>
   </entry>
   <entry>
