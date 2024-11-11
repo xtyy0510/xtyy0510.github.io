@@ -45,11 +45,11 @@
 <meta property="og:image" content="https://xtyy0510.github.io/2024/11/06/SICTF-2024-round4/16.png">
 <meta property="og:image" content="https://xtyy0510.github.io/2024/11/06/SICTF-2024-round4/17.jpg">
 <meta property="article:published_time" content="2024-11-06T12:20:58.000Z">
-<meta property="article:modified_time" content="2024-11-10T13:15:56.447Z">
+<meta property="article:modified_time" content="2024-11-11T12:36:27.307Z">
 <meta property="article:author" content="星潭月音">
-<meta property="article:tag" content="web">
 <meta property="article:tag" content="misc">
 <meta property="article:tag" content="crypto">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xtyy0510.github.io/2024/11/06/SICTF-2024-round4/1.jpg">
 
@@ -242,7 +242,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-11-10 21:15:56" itemprop="dateModified" datetime="2024-11-10T21:15:56+08:00">2024-11-10</time>
+                <time title="修改时间：2024-11-11 20:36:27" itemprop="dateModified" datetime="2024-11-11T20:36:27+08:00">2024-11-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -288,6 +288,7 @@
       
         <h1 id="SICTF-2024-Round-4"><a href="#SICTF-2024-Round-4" class="headerlink" title="SICTF 2024 #Round 4"></a><strong>SICTF 2024 #Round 4</strong></h1><p><img src="/2024/11/06/SICTF-2024-round4/1.jpg" alt="图片"></p>
 <span id="more"></span>
+
 <h2 id="Misc-5-5"><a href="#Misc-5-5" class="headerlink" title="Misc(5&#x2F;5)"></a><strong>Misc(5&#x2F;5)</strong></h2><h3 id="签到"><a href="#签到" class="headerlink" title="签到!"></a><strong>签到!</strong></h3><p>不必多言，直接关注公众号，发送SICTF Round4即可</p>
 <h3 id="派森"><a href="#派森" class="headerlink" title="派森"></a><strong>派森</strong></h3><p>按照谐音写出加密脚本，其实这里用语音识别应该也可以</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> xor</span><br><span class="line"><span class="comment">#from 提克有第爱慕 import *</span></span><br><span class="line">answer=[<span class="number">16</span>, <span class="number">29</span>, <span class="number">67</span>, <span class="number">84</span>, <span class="number">31</span>, <span class="number">75</span>, <span class="number">89</span>, <span class="number">48</span>, <span class="number">30</span>, <span class="number">111</span>, <span class="number">107</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">52</span>, <span class="number">95</span>, <span class="number">67</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">110</span>, <span class="number">51</span>, <span class="number">44</span>, <span class="number">69</span>, <span class="number">95</span>, <span class="number">118</span>, <span class="number">74</span>, <span class="number">45</span>, <span class="number">121</span>, <span class="number">95</span>, <span class="number">70</span>, <span class="number">84</span>, <span class="number">49</span>, <span class="number">49</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">33</span>, <span class="number">33</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">113</span>, <span class="number">125</span>]</span><br><span class="line">flag=<span class="comment">#&quot;SICTF&#123;&quot;+a+&quot;&#125;&quot;</span></span><br><span class="line"></span><br><span class="line">ink = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(flag),<span class="number">4</span>):</span><br><span class="line">       ink.append(xor(<span class="built_in">ord</span>(flag[i]),<span class="built_in">ord</span>(flag[i+<span class="number">2</span>])))</span><br><span class="line">       ink.append(xor(<span class="built_in">ord</span>(flag[i+<span class="number">1</span>]),<span class="built_in">ord</span>(flag[i+<span class="number">3</span>])))</span><br><span class="line">       ink.append(<span class="built_in">ord</span>(flag[i+<span class="number">2</span>]))</span><br><span class="line">       ink.append(<span class="built_in">ord</span>(flag[i+<span class="number">3</span>]))</span><br><span class="line"><span class="built_in">print</span>(ink)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -415,9 +416,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/web/" rel="tag"># web</a>
               <a href="/tags/misc/" rel="tag"># misc</a>
               <a href="/tags/crypto/" rel="tag"># crypto</a>
+              <a href="/tags/web/" rel="tag"># web</a>
           </div>
 
         
