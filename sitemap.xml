@@ -110,13 +110,6 @@
 
   
   <url>
-    <loc>https://xtyy0510.github.io/tags/web/</loc>
-    <lastmod>2025-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://xtyy0510.github.io/tags/misc/</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -130,17 +123,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://xtyy0510.github.io/tags/web/</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://xtyy0510.github.io/categories/%E6%97%A5%E5%B8%B8writeup/</loc>
+    <loc>https://xtyy0510.github.io/categories/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9Bwriteup/</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://xtyy0510.github.io/categories/%E5%AE%89%E5%BE%BD%E7%9C%81%E8%B5%9Bwriteup/</loc>
+    <loc>https://xtyy0510.github.io/categories/%E6%97%A5%E5%B8%B8writeup/</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
