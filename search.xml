@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[CISCN 2022 初赛]everlasting_night</title>
+    <url>/2025/04/13/CISCN-2022-%E5%88%9D%E8%B5%9B-everlasting-night/</url>
+    <content><![CDATA[<h1 id="CISCN-2022-初赛-everlasting-night"><a href="#CISCN-2022-初赛-everlasting-night" class="headerlink" title="[CISCN 2022 初赛]everlasting_night"></a>[CISCN 2022 初赛]everlasting_night</h1><h2 id="LSB隐写-cloacked-pixel隐写"><a href="#LSB隐写-cloacked-pixel隐写" class="headerlink" title="LSB隐写 cloacked-pixel隐写"></a>LSB隐写 cloacked-pixel隐写</h2><p>题目链接：[<a href="https://www.nssctf.cn/problem/2345">CISCN 2022 初赛]everlasting_night | NSSCTF</a></p>
+<span id="more"></span>
+
+<p>拿到题目附件，是一张png图片</p>
+<p><img src="/2025/04/13/CISCN-2022-%E5%88%9D%E8%B5%9B-everlasting-night/1.png" alt="1"></p>
+<p>010看一下</p>
+<p>结尾有冗余</p>
+<p><img src="/2025/04/13/CISCN-2022-%E5%88%9D%E8%B5%9B-everlasting-night/2.png" alt="2"></p>
+<p>不知道有啥用，也许是密钥？</p>
+<p>stegsolve扫一下看看</p>
+<p><img src="/2025/04/13/CISCN-2022-%E5%88%9D%E8%B5%9B-everlasting-night/3.png" alt="3"></p>
+<p>A2通道有奇怪的东西，猜测藏了啥东西，lsb看一下</p>
+<p>f78dcd383f1b574b，得到一个密钥，和之前010文件名末尾的不一样，带密钥的png隐写，且文件末尾冗余过少，都试了一遍，最终发现是cloacked-pixel</p>
+<p><img src="/2025/04/13/CISCN-2022-%E5%88%9D%E8%B5%9B-everlasting-night/4.png" alt="4"></p>
+<p>压缩包解压需要密码，尝试之前010末尾的值，结果不对，32位猜测是md5</p>
+<p>在线网站解密 <a href="https://www.somd5.com/">MD5免费在线解密破解_MD5在线加密-SOMD5</a></p>
+<p><img src="/2025/04/13/CISCN-2022-%E5%88%9D%E8%B5%9B-everlasting-night/5.png" alt="5"></p>
+<p>ohhWh04m1</p>
+<p>解压得到一个文件，看起来像png，改后缀不对，最终百度得到这是一个data图片，使用GIMP查看得到flag</p>
+<p><img src="/2025/04/13/CISCN-2022-%E5%88%9D%E8%B5%9B-everlasting-night/6.png" alt="6"></p>
+]]></content>
+      <categories>
+        <category>CISCN国赛</category>
+      </categories>
+      <tags>
+        <tag>misc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[CISCN 2023 华北]pysym</title>
     <url>/2025/02/15/CISCN-2023-%E5%8D%8E%E5%8C%97-pysym/</url>
     <content><![CDATA[<h1 id="CISCN-2023-华北-pysym"><a href="#CISCN-2023-华北-pysym" class="headerlink" title="[CISCN 2023 华北]pysym"></a>[CISCN 2023 华北]pysym</h1><p>题目链接：[<a href="https://www.nssctf.cn/problem/4098">CISCN 2023 华北]pysym | NSSCTF</a></p>
