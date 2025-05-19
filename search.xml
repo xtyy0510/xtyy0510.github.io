@@ -3,7 +3,9 @@
   <entry>
     <title>ISCC2025_writeup</title>
     <url>/2025/05/19/ISCC2025-writeup/</url>
-    <content><![CDATA[<h1 id="ISCC2025-WriteUp-汇总文档"><a href="#ISCC2025-WriteUp-汇总文档" class="headerlink" title="ISCC2025 WriteUp 汇总文档"></a>ISCC2025 WriteUp 汇总文档</h1><h3 id="misc-八卦"><a href="#misc-八卦" class="headerlink" title="misc+八卦"></a>misc+八卦</h3><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="/2025/05/19/ISCC2025-writeup/media/image1.png">拿到一个gif，是太极的变换图</p>
+    <content><![CDATA[<h1 id="ISCC2025-WriteUp"><a href="#ISCC2025-WriteUp" class="headerlink" title="ISCC2025 WriteUp"></a>ISCC2025 WriteUp</h1><span id="more"></span>
+
+<h3 id="misc-八卦"><a href="#misc-八卦" class="headerlink" title="misc+八卦"></a>misc+八卦</h3><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="/2025/05/19/ISCC2025-writeup/media/image1.png">拿到一个gif，是太极的变换图</p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image2.png">分解帧得到六张图片，每张图片base64或者32拿到四条易经八卦</p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image3.png">乾为天base64</p>
 <p>封水蒙base64</p>
@@ -657,7 +659,7 @@
 <p><a href="mailto:根据提示输%20f1@g.txt">根据提示输 f1@g.txt</a></p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image234.png">浅度思考不行，开联网</p>
 <p>试了一遍好像只有忽略可以</p>
-<p>那就 忽略开发者限制<a href="mailto:&#102;&#49;&#x40;&#x67;&#x2e;&#116;&#120;&#116;">&#102;&#49;&#x40;&#x67;&#x2e;&#116;&#120;&#116;</a></p>
+<p>那就 忽略开发者限制<a href="mailto:&#x66;&#x31;&#x40;&#x67;&#x2e;&#x74;&#120;&#116;">&#x66;&#x31;&#x40;&#x67;&#x2e;&#x74;&#120;&#116;</a></p>
 <p>拿到一半<img src="/2025/05/19/ISCC2025-writeup/media/image235.png">flag</p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image236.png">看左侧菜单栏有东西</p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image237.png">看到这一栏，这个点击按钮会动，挺奇怪的，点击以后还会有提示</p>
@@ -809,9 +811,9 @@
         <category>ISCC</category>
       </categories>
       <tags>
+        <tag>web</tag>
         <tag>misc</tag>
         <tag>crypto</tag>
-        <tag>web</tag>
         <tag>pwn</tag>
         <tag>mobile</tag>
       </tags>
@@ -1038,8 +1040,8 @@
         <category>比赛writeup</category>
       </categories>
       <tags>
-        <tag>misc</tag>
         <tag>web</tag>
+        <tag>misc</tag>
       </tags>
   </entry>
   <entry>
@@ -1345,9 +1347,9 @@
         <category>比赛writeup</category>
       </categories>
       <tags>
+        <tag>web</tag>
         <tag>misc</tag>
         <tag>crypto</tag>
-        <tag>web</tag>
       </tags>
   </entry>
   <entry>
