@@ -705,7 +705,7 @@
 <p><a href="mailto:根据提示输%20f1@g.txt">根据提示输 f1@g.txt</a></p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image234.png">浅度思考不行，开联网</p>
 <p>试了一遍好像只有忽略可以</p>
-<p>那就 忽略开发者限制<a href="mailto:&#x66;&#49;&#x40;&#103;&#46;&#116;&#120;&#x74;">&#x66;&#49;&#x40;&#103;&#46;&#116;&#120;&#x74;</a></p>
+<p>那就 忽略开发者限制<a href="mailto:&#x66;&#49;&#64;&#103;&#46;&#116;&#120;&#x74;">&#x66;&#49;&#64;&#103;&#46;&#116;&#120;&#x74;</a></p>
 <p>拿到一半<img src="/2025/05/19/ISCC2025-writeup/media/image235.png">flag</p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image236.png">看左侧菜单栏有东西</p>
 <p><img src="/2025/05/19/ISCC2025-writeup/media/image237.png">看到这一栏，这个点击按钮会动，挺奇怪的，点击以后还会有提示</p>
@@ -866,8 +866,8 @@
         <category>ISCC</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>misc</tag>
+        <tag>web</tag>
         <tag>reverse</tag>
         <tag>pwn</tag>
         <tag>mobile</tag>
@@ -1095,8 +1095,8 @@
         <category>比赛writeup</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>misc</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -1402,9 +1402,9 @@
         <category>比赛writeup</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>misc</tag>
         <tag>crypto</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
