@@ -1193,7 +1193,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #1affb6;
+  background: #36cc26;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2567,6 +2567,7 @@ body {
   background-attachment: fixed;
   background-position: 75% 75%;
   background-size: cover;
+  background-color: #f0f0f0; /* 这里改成你想要的背景色，比如黑色 */
 }
 .sidebar {
   transition-duration: 0.4s;
